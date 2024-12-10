@@ -116,7 +116,7 @@
 }
 
 .character-3 {
-  bottom: -35%;
+  bottom: -20%;
   right: 45%;
   transform: rotate(-6deg);
   animation: float 4s infinite;
@@ -125,6 +125,7 @@
 position: relative;
 bottom: 50px;
 width: 120%;
+height: 120%;
 }
 @keyframes float {
   0%, 100% {
