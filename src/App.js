@@ -2,6 +2,7 @@ import './App.css';
 import headWithCap from './img/head-with-cap.png';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
+import PurpleCircle from './img/back-purple-circle.png'
 
 
 
@@ -36,6 +37,13 @@ function App() {
 
           {/* Right Column - Characters */}
           <div className="characters">
+            <img className="purpleCircle"
+             src={PurpleCircle}
+             alt="Character with bun"
+             width={800}
+             height={714.06}
+             z={-1}
+            />
             <div className="character character-1">
               <img
                 src={headWithout}
