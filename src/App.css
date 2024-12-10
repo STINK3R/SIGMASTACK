@@ -1,5 +1,4 @@
 
-
 .app {
   min-height: 100vh;
   background: #F6F6F6;
@@ -87,9 +86,7 @@
 
 .characters {
   position: relative;
-  width: 400px;
-  height: 400px;
-
+  height: 450px;
 }
 
 
@@ -104,29 +101,30 @@
 }
 
 .character-1 {
-  top: 0%;
+  top: 10%;
   right: 45%;
   transform: rotate(-12deg);
   animation: float 3s infinite;
 }
 
 .character-2 {
-  top: 40%;
+  top: 50%;
   right: 2%;
   transform: rotate(12deg);
   animation: float 3.5s infinite;
+
 }
 
 .character-3 {
-  bottom: -30%;
+  bottom: -35%;
   right: 45%;
   transform: rotate(-6deg);
   animation: float 4s infinite;
 }
 .purpleCircle{
 position: relative;
-bottom: 100px;
-right: 15rem;
+bottom: 50px;
+width: 120%;
 }
 @keyframes float {
   0%, 100% {
