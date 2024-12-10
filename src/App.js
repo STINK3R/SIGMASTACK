@@ -40,7 +40,7 @@ function App() {
             <img className="purpleCircle"
              src={PurpleCircle}
              alt="Character with bun"
-             width={800}
+             width={757.19}
              height={714.06}
              z={-1}
             />
