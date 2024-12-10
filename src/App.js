@@ -5,6 +5,8 @@ import headWithCap from './img/head-with-cap.png';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
 import PurpleCircle from './img/back-purple-circle.png';
+import RegistrationPage from './RegistrationPage'
+import LoginPage from './LoginPage'
 
 // Страницы
 function HomePage() {
@@ -85,47 +87,6 @@ function HomePage() {
   );
 }
 
-function LoginPage() {
-  return (
-    <div className="form-page">
-      <h2>Вход</h2>
-      <form>
-        <label>
-          Электронная почта:
-          <input type="email" required />
-        </label>
-        <label>
-          Пароль:
-          <input type="password" required />
-        </label>
-        <button type="submit">Войти</button>
-      </form>
-    </div>
-  );
-}
-
-function RegistrationPage() {
-  return (
-    <div className="form-page">
-      <h2>Регистрация</h2>
-      <form>
-        <label>
-          Имя:
-          <input type="text" required />
-        </label>
-        <label>
-          Электронная почта:
-          <input type="email" required />
-        </label>
-        <label>
-          Пароль:
-          <input type="password" required />
-        </label>
-        <button type="submit">Зарегистрироваться</button>
-      </form>
-    </div>
-  );
-}
 
 function App() {
   return (
