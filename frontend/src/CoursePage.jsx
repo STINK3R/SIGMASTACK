@@ -182,7 +182,7 @@ const CoursePage = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    navigate('/login');
+    navigate('/');
   };
 
   if (isLoading) return <div>Загрузка...</div>;

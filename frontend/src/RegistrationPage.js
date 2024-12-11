@@ -168,13 +168,13 @@ function RegistrationPage() {
             </label>
           </fieldset>
           <label className="terms-checkbox">
+          Я согласен на обработку персональных данных
             <input
               type="checkbox"
               name="agreeToTerms"
               checked={formData.agreeToTerms}
               onChange={handleChange}
             />
-            Я согласен на обработку персональных данных
           </label>
           <button 
             className='button-auth' 

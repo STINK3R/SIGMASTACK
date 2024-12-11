@@ -117,7 +117,7 @@ const ProfileManagement = () => {
       
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Ошибка при выходе:', error);
     }
@@ -129,20 +129,6 @@ const ProfileManagement = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="Personal-data">
-        <p 
-          onClick={() => handleTabChange('personalData')}
-          className={activeTab === 'personalData' ? 'active' : ''}
-        >
-          Личные данные
-        </p>
-        <p 
-          onClick={() => handleTabChange('myCourses')}
-          className={activeTab === 'myCourses' ? 'active' : ''}
-        >
-          {userData?.role === 'teacher' ? 'Мои курсы' : 'Подписки'}
-        </p>
-      </div>
       
       {/* Main Content */}
       <main className="container mx-auto mt-8 px-4">
