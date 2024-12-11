@@ -48,7 +48,7 @@ function LoginPage() {
   return (
     <div className="form-page">
       <h2>Вход</h2>
-      {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
+      {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit} className='form-log'>
         <label>
           Электронная почта:
