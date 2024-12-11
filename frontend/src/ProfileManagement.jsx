@@ -103,6 +103,7 @@ const ProfileManagement = () => {
       console.error('Ошибка при сохранении:', error);
       alert(error.message || 'Ошибка при сохранении данных');
     }
+    navigate('/profile');
   };
 
   const handleLogout = async () => {

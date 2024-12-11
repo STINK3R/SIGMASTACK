@@ -16,7 +16,7 @@ function LoginPage() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      navigate('/profilemanagement');
+      navigate('/allcourses');
     }
   }, [navigate]);
 
@@ -62,7 +62,7 @@ function LoginPage() {
 
       if (savedToken) {
         // Перенаправляем на страницу профиля
-        navigate('/profilemanagement');
+        navigate('/allcourses');
       } else {
         throw new Error('Ошибка при сохранении токена');
       }

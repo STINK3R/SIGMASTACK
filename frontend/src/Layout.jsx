@@ -26,8 +26,8 @@ const Layout = ({ children }) => {
         </div>
         <nav className="nav-menu">
           <Link 
-            to="/profilemanagement" 
-            className={location.pathname === '/profilemanagement' ? 'active' : ''}
+            to="/profile" 
+            className={location.pathname === '/profile' ? 'active' : ''}
           >
             Личные данные
           </Link>

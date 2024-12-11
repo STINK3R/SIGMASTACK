@@ -10,6 +10,7 @@ import MyCourses from './MyCourses';
 import CoursePage from './CoursePage';
 import Layout from './Layout';
 import AllCourses from './AllCourses';
+import UserProfile from './UserProfile';
 
 // Компонент для защищенных маршрутов
 const PrivateRoute = ({ children }) => {
@@ -77,6 +78,16 @@ function App() {
             <PrivateRoute>
               <Layout>
                 <CoursePage />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/profile" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <UserProfile />
               </Layout>
             </PrivateRoute>
           } 

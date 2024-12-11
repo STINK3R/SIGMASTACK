@@ -24,7 +24,7 @@ function RegistrationPage() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      navigate('/profilemanagement');
+      navigate('/allcourses');
     }
   }, [navigate]);
 
