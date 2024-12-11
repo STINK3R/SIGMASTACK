@@ -393,3 +393,7 @@ justify-content: center;
 .input-image-port input{
 visibility: none;
 }
+
+.display-none{
+display: none;
+}
