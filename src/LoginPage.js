@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
+import PurpleCircle from './img/back-purple-circle.png';
+
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -47,7 +49,7 @@ function LoginPage() {
     <div className="form-page">
       <h2>Вход</h2>
       {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form-log'>
         <label>
           Электронная почта:
           <input 
@@ -68,9 +70,11 @@ function LoginPage() {
             disabled={isLoading}
           />
         </label>
+        <div className='send-selection'>
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Вход...' : 'Войти'}
         </button>
+        </div>
       </form>
       <div className='characters1'>
         <div className="character character-11">
@@ -80,6 +84,14 @@ function LoginPage() {
           <img src={headWithGlasses} alt="Character with glasses" width={250} height={200} />
         </div>
       </div>
+      <img
+                className="purpleCircle-reglog"
+                src={PurpleCircle}
+                alt="Character with bun"
+                width={757.19}
+                height={714.06}
+                
+              />
     </div>
   );
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
+import PurpleCircle from './img/back-purple-circle.png';
+
 
 function RegistrationPage() {
   const [formData, setFormData] = useState({
@@ -68,7 +70,7 @@ function RegistrationPage() {
     <div className="form-page">
       <h2>Регистрация</h2>
       {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form-reg'>
         <label>
           Имя:
           <input
@@ -119,6 +121,7 @@ function RegistrationPage() {
             required
           />
         </label>
+        <div className='send-selection'>
         <fieldset>
           <legend>Выберите вашу роль:</legend>
           <div className='iam'>Я Ученик</div>
@@ -159,6 +162,7 @@ function RegistrationPage() {
         >
           {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
         </button>
+        </div>
       </form>
       
       <div className='characters1'>
@@ -169,6 +173,14 @@ function RegistrationPage() {
           <img src={headWithGlasses} alt="Character with glasses" width={250} height={200} />
         </div>
       </div>
+      <img
+                className="purpleCircle-reglog"
+                src={PurpleCircle}
+                alt="Character with bun"
+                width={757.19}
+                height={714.06}
+                
+              />
     </div>
   );
 }
