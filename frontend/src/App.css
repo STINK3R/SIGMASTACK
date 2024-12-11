@@ -337,3 +337,8 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.flex-direction-column{
+flex-direction: column;
+
+}

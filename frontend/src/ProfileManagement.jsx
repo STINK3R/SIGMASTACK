@@ -228,10 +228,20 @@ const ProfileManagement = () => {
                 {/* Password Section */}
                 <section>
                   <h3 className="text-lg font-semibold">Пароль и авторизация</h3>
-                  <div className="flex items-center gap-4 mt-4">
+                  <div className="flex flex-direction-column">
                     <input
                       type="password"
-                      placeholder="Пароль"
+                      placeholder="Введите старый пароль"
+                      className="border rounded-lg px-4 py-2 w-full"
+                    />
+                     <input
+                      type="password"
+                      placeholder="Введите новый пароль"
+                      className="border rounded-lg px-4 py-2 w-full"
+                    />
+                     <input
+                      type="password"
+                      placeholder="Повторите новый пароль"
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                   </div>
