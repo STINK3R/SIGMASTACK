@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: educonnect-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=educonnect
+    networks:
+      - app-network
+
+  backend:
+    container_name: educonnect-backend
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/educonnect
+      - JWT_SECRET=your_jwt_secret
+      - PORT=4000
+    volumes:
+      - ./src:/app/src
+      - /app/node_modules
+    networks:
+      - app-network
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

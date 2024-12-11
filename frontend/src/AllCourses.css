@@ -1,0 +1,91 @@
+.courses-container {
+  padding: 20px;
+}
+
+.courses-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.course-card.subscribed {
+  border: 2px solid #9333EA;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.1);
+  position: relative;
+}
+
+.course-card.subscribed::before {
+  content: '✓ Вы подписаны';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #9333EA;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.subscribe-btn,
+.unsubscribe-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.subscribe-btn {
+  background: #9333EA;
+  color: white;
+}
+
+.unsubscribe-btn {
+  background: #DC2626;
+  color: white;
+}
+
+.course-card:hover .subscribe-btn,
+.course-card:hover .unsubscribe-btn {
+  opacity: 1;
+}
+
+.subscribe-btn:hover {
+  background: #7E22CE;
+}
+
+.unsubscribe-btn:hover {
+  background: #B91C1C;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  padding: 20px;
+}
