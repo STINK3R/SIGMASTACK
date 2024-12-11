@@ -57,7 +57,7 @@ function RegistrationPage() {
       localStorage.setItem('user', JSON.stringify(data.user));
 
       // Перенаправляем на главную
-      navigate('/');
+      navigate('/mainpage');
     } catch (err) {
       setError(err.message);
       console.error('Ошибка:', err);
