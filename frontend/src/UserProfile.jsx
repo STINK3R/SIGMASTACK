@@ -86,9 +86,10 @@ const UserProfile = () => {
                         onChange={handleAvatarChange}
                     />
                 </div>
-                <div className='input-about'>
-                    <div className="">
+                <div className=''>
+                    <div className="input-about">
                         <label>Имя</label>
+                        <br></br>
                         <input type="text" value={userInfo.firstName} readOnly />
                     </div>
                     <div className="input-about">
@@ -106,10 +107,16 @@ const UserProfile = () => {
                     <div className="input-about">
                         <label>Контактная информация</label>
                         <input type="phone" value={userInfo.phoneNumber} readOnly />
+                    <input type="email" value={userInfo.email} readOnly className='email' />
                     </div>
-                    <input type="email" value={userInfo.email} readOnly />
-                    <button className='mt-20' onClick={handleValueChange}>Изменить информацию</button>
-                    </div>
+                <div className='flex'>
+                    <button className='button-change'
+                    onClick={handleValueChange}
+                    >
+                        Изменить информацию
+                        </button>
+                        </div>
+                        </div>
                     <div className={styles.portfolioTile} onClick={handlePortfolioClick}>
                     <h3 className={styles.tileTitle}>Портфолио и резюме</h3>
                     <img 

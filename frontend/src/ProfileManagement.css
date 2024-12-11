@@ -22,14 +22,20 @@ justify-content: center;
 .last-button{
 margin-bottom: 10%;
 }
-
+.input-about-profile{
+  border: 1px solid #d1d5db; /* Gray border */
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  margin: 5px;
+}
 .input-about input{
   border: 1px solid #d1d5db; /* Gray border */
   border-radius: 8px;
   padding: 20px;
   width: 80%;
   margin: 5px;
-
+  
 }
 
 .input-search input{

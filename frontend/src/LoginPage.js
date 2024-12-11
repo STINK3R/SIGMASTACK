@@ -62,7 +62,7 @@ function LoginPage() {
 
       if (savedToken) {
         // Перенаправляем на страницу профиля
-        navigate('/allcourses');
+        navigate('/profile');
       } else {
         throw new Error('Ошибка при сохранении токена');
       }

@@ -86,6 +86,22 @@ padding: 2%;
   cursor: pointer;
   transition: all 0.2s;
 }
+.button-change{
+  margin-top: 5%;
+  width: 12rem;
+  padding: 1rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+}
+.flex{
+display: flex;
+align-items: center;
+justify-content: center;
+max-width: 500px;
+}
 
 .button-primary {
   background-color: #9333EA;
