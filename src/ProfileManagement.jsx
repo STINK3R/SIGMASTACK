@@ -1,9 +1,127 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import MyCourses from "./MyCourses"; 
 import './ProfileManagement.css';
+import SearchBar from './components/SearchBar';
 
 const ProfileManagement = () => {
   const [activeTab, setActiveTab] = useState('personalData');
+  const [userData, setUserData] = useState(null);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    middleName: '',
+    birthDate: '',
+    position: '',
+    phone: '',
+    email: ''
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem('token');
+      console.log('Проверка токена:', token);
+
+      if (!token) {
+        console.log('Токен не найден, перенаправление на /login');
+        navigate('/login');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:4000/api/me', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        console.log('Ответ от сервера:', response.status);
+
+        if (!response.ok) {
+          throw new Error('Ошибка авторизации');
+        }
+
+        const data = await response.json();
+        console.log('Данные пользователя:', data);
+        setUserData(data);
+        
+        // Заполняем форму данными пользователя
+        setFormData({
+          firstName: data.firstName || '',
+          lastName: data.lastName || '',
+          middleName: data.middleName || '',
+          birthDate: data.birthDate || '',
+          position: data.position || '',
+          phone: data.phone || '',
+          email: data.email || ''
+        });
+      } catch (error) {
+        console.error('Ошибка при проверке авторизации:', error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/login');
+      }
+    };
+
+    checkAuth();
+  }, [navigate]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSavePersonal = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Отправляем данные:', formData);
+      console.log('Токен:', token);
+
+      const response = await fetch('http://localhost:4000/api/user/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+      console.log('Ответ сервера:', data);
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Ошибка при обновлении данных');
+      }
+
+      setUserData(data);
+      alert('Данные успешно сохранены');
+    } catch (error) {
+      console.error('Ошибка при сохранении:', error);
+      alert(error.message || 'Ошибка при сохранении данных');
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await fetch('http://localhost:4000/api/logout', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate('/login');
+    } catch (error) {
+      console.error('Ошибка при выходе:', error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -13,19 +131,16 @@ const ProfileManagement = () => {
               <span className="logo-edu">Edu</span>
               <span className="logo-connect">Connect</span>
             </h1>
-          <div className="input-search">
-            <input
-              type="text"
-              placeholder="Искать курсы и статьи"
-              
-            />
-          </div>
+          <SearchBar />
           <div className="flex items-center space-x-4">
             <img 
               src="https://via.placeholder.com/50"
               alt="User"
               className="miniavatar"
             />
+            <button onClick={handleLogout} className="logout-button">
+              Выйти
+            </button>
         </div>
       </header>
 
@@ -73,30 +188,45 @@ const ProfileManagement = () => {
                     <input
                       type="text"
                       placeholder="Фамилия*"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                     <input
                       type="text"
                       placeholder="Имя*"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                     <input
                       type="text"
                       placeholder="Отчество*"
+                      name="middleName"
+                      value={formData.middleName}
+                      onChange={handleInputChange}
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                     <input
                       type="date"
                       placeholder="Дата рождения*"
+                      name="birthDate"
+                      value={formData.birthDate}
+                      onChange={handleInputChange}
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                     <input
                       type="text"
                       placeholder="Должность"
+                      name="position"
+                      value={formData.position}
+                      onChange={handleInputChange}
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                   </div>
-                  <button className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg">
+                  <button className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg" onClick={handleSavePersonal}>
                     Сохранить
                   </button>
                 </section>
@@ -108,15 +238,21 @@ const ProfileManagement = () => {
                     <input
                       type="text"
                       placeholder="Контактный телефон*"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                     <input
                       type="email"
                       placeholder="Электронная почта*"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       className="border rounded-lg px-4 py-2 w-full"
                     />
                   </div>
-                  <button className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg">
+                  <button className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg" onClick={handleSavePersonal}>
                     Сохранить
                   </button>
                 </section>

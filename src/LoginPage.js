@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
@@ -11,6 +11,13 @@ function LoginPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/profilemanagement');
+    }
+  }, [navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -29,16 +36,32 @@ function LoginPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Ошибка при входе');
+        throw new Error(data.message || 'Ошибк�� при входе');
+      }
+
+      // Добавим логирование
+      console.log('Получен ответ:', data);
+
+      if (!data.token) {
+        throw new Error('Токен не получен от сервера');
       }
 
       // Сохраняем токен
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
-      // Перенаправляем на главную
-      navigate('/profilemanagement');
+      // Проверим сохранение
+      const savedToken = localStorage.getItem('token');
+      console.log('Сохраненный токен:', savedToken);
+
+      if (savedToken) {
+        // Перенаправляем на страницу профиля
+        navigate('/profilemanagement');
+      } else {
+        throw new Error('Ошибка при сохранении токена');
+      }
     } catch (err) {
+      console.error('Ошибка при входе:', err);
       setError(err.message);
     } finally {
       setIsLoading(false);

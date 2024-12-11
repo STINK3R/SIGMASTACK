@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
@@ -17,6 +17,14 @@ function RegistrationPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  // Проверяем при загрузке компонента, авторизован ли пользователь
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/profilemanagement');
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,13 +50,7 @@ function RegistrationPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      }).catch(err => {
-        throw new Error('Ошибка сети. Пожалуйста, проверьте подключение к серверу.');
       });
-
-      if (!response) {
-        throw new Error('Нет ответа от сервера');
-      }
 
       const data = await response.json();
 
@@ -56,15 +58,14 @@ function RegistrationPage() {
         throw new Error(data.message || 'Ошибка при регистрации');
       }
 
-      // Сохраняем токен и данные пользователя
+      // Сохраняем токен
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
-      // Перенаправляем на главную
-      navigate('/');
+      // Перенаправляем на страницу профиля
+      navigate('/profilemanagement');
     } catch (err) {
       setError(err.message);
-      console.error('Ошибка:', err);
     } finally {
       setIsLoading(false);
     }

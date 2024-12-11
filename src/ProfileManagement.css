@@ -192,3 +192,18 @@ margin-left: 12.8%;
 .Personal-data p{
 cursor: pointer;
 }
+
+.logout-button {
+  background-color: transparent;
+  color: #9333EA;
+  border: 1px solid #9333EA;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #9333EA;
+  color: white;
+}

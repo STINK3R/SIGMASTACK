@@ -1,0 +1,179 @@
+.courses-container {
+  padding: 20px;
+}
+
+.courses-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.course-card.subscribed {
+  border: 2px solid #9333EA;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.1);
+  position: relative;
+}
+
+.course-card.subscribed::before {
+  content: '✓ Вы подписаны';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #9333EA;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.create-course-btn {
+  background: #9333EA;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.create-course-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-course-form input,
+.create-course-form textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.subscribe-btn {
+  background: #9333EA;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.course-card:hover .subscribe-btn {
+  opacity: 1;
+}
+
+.subscribe-btn:hover {
+  background: #7E22CE;
+}
+
+.subscribed {
+  border-left: 4px solid #9333EA;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  padding: 20px;
+}
+
+.edit-course-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.edit-course-form h4 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.edit-course-form input,
+.edit-course-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.edit-course-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.edit-btn {
+  background: #7E22CE;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+  background: #6B21A8;
+}
+
+.course-card .edit-btn,
+.course-card .subscribe-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.course-card:hover .edit-btn,
+.course-card:hover .subscribe-btn {
+  opacity: 1;
+}
+
+.unsubscribe-btn {
+  background: #DC2626;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.unsubscribe-btn:hover {
+  background: #B91C1C;
+}
+
+.course-card:hover .unsubscribe-btn {
+  opacity: 1;
+} 
