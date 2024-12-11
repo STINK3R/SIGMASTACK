@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import MyCourses from "./MyCourses"; 
 import './ProfileManagement.css';
-import SearchBar from './components/SearchBar';
+import { sanitizeInput } from './utils/sanitize';
 
 const ProfileManagement = () => {
   const [activeTab, setActiveTab] = useState('personalData');
@@ -46,7 +46,7 @@ const ProfileManagement = () => {
         console.log('Данные пользователя:', data);
         setUserData(data);
         
-        // Заполняем форму данными пользователя
+        // Заполняем форму д��нными пользователя
         setFormData({
           firstName: data.firstName || '',
           lastName: data.lastName || '',
@@ -71,7 +71,7 @@ const ProfileManagement = () => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: sanitizeInput(value)
     }));
   };
 
@@ -123,9 +123,27 @@ const ProfileManagement = () => {
     }
   };
 
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-
+      <div className="Personal-data">
+        <p 
+          onClick={() => handleTabChange('personalData')}
+          className={activeTab === 'personalData' ? 'active' : ''}
+        >
+          Личные данные
+        </p>
+        <p 
+          onClick={() => handleTabChange('myCourses')}
+          className={activeTab === 'myCourses' ? 'active' : ''}
+        >
+          {userData?.role === 'teacher' ? 'Мои курсы' : 'Подписки'}
+        </p>
+      </div>
+      
       {/* Main Content */}
       <main className="container mx-auto mt-8 px-4">
 

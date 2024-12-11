@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
 import PurpleCircle from './img/back-purple-circle.png';
+import { sanitizeInput } from './utils/sanitize';
 
 
 function LoginPage() {
@@ -25,18 +26,23 @@ function LoginPage() {
     setIsLoading(true);
 
     try {
+      const sanitizedData = {
+        email: sanitizeInput(email),
+        password: sanitizeInput(password)
+      };
+
       const response = await fetch('http://localhost:4000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(sanitizedData),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Ошибк�� при входе');
+        throw new Error(data.message || 'Ошибка при входе');
       }
 
       // Добавим логирование

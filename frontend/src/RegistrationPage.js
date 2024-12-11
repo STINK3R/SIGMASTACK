@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import headWithGlasses from './img/head-with-glasses.png';
 import headWithout from './img/head-without.png';
 import PurpleCircle from './img/back-purple-circle.png';
+import { sanitizeInput } from './utils/sanitize';
 
 function RegistrationPage() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,8 @@ function RegistrationPage() {
     firstName: '',
     lastName: '',
     middleName: '',
-    role: ''
+    role: '',
+    agreeToTerms: false
   });
   const [currentStep, setCurrentStep] = useState(1); // Шаг регистрации
   const [error, setError] = useState('');
@@ -27,10 +29,10 @@ function RegistrationPage() {
   }, [navigate]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
+    const { name, value, type, checked } = e.target;
+    setFormData(prevState => ({
       ...prevState,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : sanitizeInput(value)
     }));
   };
 
@@ -165,10 +167,20 @@ function RegistrationPage() {
               />
             </label>
           </fieldset>
+          <label className="terms-checkbox">
+            <input
+              type="checkbox"
+              name="agreeToTerms"
+              checked={formData.agreeToTerms}
+              onChange={handleChange}
+            />
+            Я согласен на обработку персональных данных
+          </label>
           <button 
             className='button-auth' 
             type="submit"
-            disabled={isLoading}
+            disabled={!formData.agreeToTerms || isLoading}
+            style={{ opacity: !formData.agreeToTerms ? 0.5 : 1 }}
           >
             {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
           </button>

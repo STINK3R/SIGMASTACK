@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
 import RegistrationPage from './RegistrationPage'
@@ -13,55 +13,32 @@ import AllCourses from './AllCourses';
 
 // Компонент для защищенных маршрутов
 const PrivateRoute = ({ children }) => {
-  const navigate = useNavigate();
-  const [isChecking, setIsChecking] = useState(true);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem('token');
-      console.log('PrivateRoute проверка токена:', token);
-
-      if (!token) {
-        console.log('Токен не найден, перенаправление');
-        navigate('/');
-        return;
-      }
-
-      try {
-        const response = await fetch('http://localhost:4000/api/me', {
-          headers: {
-            'Authorization': token
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error('Ошибка авторизации');
-        }
-
-        setIsChecking(false);
-      } catch (error) {
-        console.error('Ошибка проверки токена:', error);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        navigate('/login');
-      }
-    };
-
-    checkAuth();
-  }, [navigate]);
-
-  if (isChecking) {
-    return <div>Проверка авторизации...</div>;
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return <Navigate to="/login" />;
   }
 
   return children;
+};
+
+// Компонент для проверки роли и перенаправления
+const AuthRedirect = () => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.role === 'student') {
+      return <Navigate to="/mycourses" />;
+    }
+    return <Navigate to="/profilemanagement" />;
+  }
+  return <HomePage />;
 };
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<AuthRedirect />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route 
