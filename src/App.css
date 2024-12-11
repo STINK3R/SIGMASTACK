@@ -181,6 +181,7 @@ form {
   gap: 1rem;
   max-width: 400px;
   width: 100%;
+  z-index: 1;
 }
 
 form label {
