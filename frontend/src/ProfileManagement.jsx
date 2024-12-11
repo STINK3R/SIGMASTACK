@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import MyCourses from "./MyCourses"; 
 import './ProfileManagement.css';
 import { sanitizeInput } from './utils/sanitize';
+import './UserProfile'
+
 
 const ProfileManagement = () => {
   const [activeTab, setActiveTab] = useState('personalData');
@@ -17,6 +19,21 @@ const ProfileManagement = () => {
     email: ''
   });
   const navigate = useNavigate();
+
+
+  const [portfolioImage, setPortfolioImage] = useState('defaultPortfolioImage'); // Дефолтное изображение
+  const handlePortfolioImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log('Файл выбран:', file); // Для проверки
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            console.log('Файл загружен:', e.target.result); // Для проверки
+            setPortfolioImage(e.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+};
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -226,6 +243,19 @@ const ProfileManagement = () => {
                   </button>
                 </section>
 
+                <section className="mb-8">
+                <h3 className="text-lg font-semibold">Сменить показываемое фото на Портфолио</h3>
+
+                <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handlePortfolioImageChange}
+                        className="input-file"
+                    />
+                     <button className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg" onClick={handleSavePersonal}>
+                    Сохранить
+                  </button>
+</section>
                 {/* Password Section */}
                 <section>
                   <h3 className="text-lg font-semibold">Пароль и авторизация</h3>

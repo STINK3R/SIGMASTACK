@@ -205,3 +205,7 @@ cursor: pointer;
   background-color: #9333EA;
   color: white;
 }
+
+.input-file{
+width: 100%;
+}

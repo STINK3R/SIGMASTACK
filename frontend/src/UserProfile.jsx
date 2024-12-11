@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './UserProfile.module.css';
+import defaultPortfolioImage from './img/no-image-available.jpg';
+import './ProfileManagement';
 
 const UserProfile = () => {
     const navigate = useNavigate();
@@ -19,6 +21,24 @@ const UserProfile = () => {
         // Логика выхода из аккаунта (например, очистка токена)
         navigate('/'); // Перенаправляем на страницу логина
     };
+
+    // Состояние для изображения плитки
+    const [portfolioImage, setPortfolioImage] = useState(defaultPortfolioImage); // Дефолтное изображение
+
+    const handlePortfolioImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log('Файл выбран:', file); // Для проверки
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            console.log('Файл загружен:', e.target.result); // Для проверки
+            setPortfolioImage(e.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+
     const handleValueChange = () => {
         navigate('/profilemanagement');
     };
@@ -35,6 +55,10 @@ const UserProfile = () => {
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    const handlePortfolioClick = () => {
+        navigate('/portfolio');
     };
 
     return (
@@ -82,11 +106,19 @@ const UserProfile = () => {
                     <div className="input-about">
                         <label>Контактная информация</label>
                         <input type="phone" value={userInfo.phoneNumber} readOnly />
-
                     </div>
                     <input type="email" value={userInfo.email} readOnly />
                     <button className='mt-20' onClick={handleValueChange}>Изменить информацию</button>
                     </div>
+                    <div className={styles.portfolioTile} onClick={handlePortfolioClick}>
+                    <h3 className={styles.tileTitle}>Портфолио и резюме</h3>
+                    <img 
+                        src={portfolioImage} 
+                        alt="Портфолио" 
+                        className={styles.tileImage} 
+                    />
+
+                </div>
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ import CoursePage from './CoursePage';
 import Layout from './Layout';
 import AllCourses from './AllCourses';
 import UserProfile from './UserProfile';
+// import Portfolio from './Portfolio';
 
 // Компонент для защищенных маршрутов
 const PrivateRoute = ({ children }) => {
@@ -52,6 +53,16 @@ function App() {
             </PrivateRoute>
           } 
         />
+        {/* <Route 
+          path="/portfolio" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <Portfolio />
+              </Layout>
+            </PrivateRoute>
+          } 
+        /> */}
         <Route 
           path="/mycourses" 
           element={
