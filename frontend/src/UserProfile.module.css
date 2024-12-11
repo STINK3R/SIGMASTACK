@@ -1,0 +1,95 @@
+.profilePage {
+    padding: 20px;
+    background-color: #f9f9f9; /* Цвет фона */
+}
+
+.header {
+    display: flex; /* Flexbox для заголовка */
+    justify-content: space-between; /* Раздвигаем содержимое по краям */
+    align-items: center; /* Центрируем по вертикали */
+    margin-bottom: 30px; /* Отступ под заголовком */
+}
+
+.logo {
+    font-size: 36px; /* Размер шрифта логотипа */
+    color: #4a90e2; /* Цвет логотипа */
+}
+
+.logoutButton {
+    background-color: #e94e77; /* Цвет кнопки выхода */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Размер шрифта */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+}
+
+.logoutButton:hover {
+    background-color: #d8436e; /* Цвет кнопки при наведении */
+}
+
+.title {
+    font-size: 28px; /* Размер шрифта заголовка */
+    margin-bottom: 50px; /* Отступ под заголовком профиля */
+    margin-top: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column; /* Вертикальная ориентация полей */
+}
+
+.field {
+    margin-bottom: 15px; /* Отступ между полями */
+}
+
+.field label {
+    display: block; /* Полное отображение метки */
+    margin-bottom: 5px; /* Отступ под меткой */
+}
+
+.field input {
+    padding: 10px; /* Отступ внутри полей */
+    border: 1px solid #ccc; /* Цвет границы */
+    border-radius: 5px; /* Закругление углов */
+    width: 100%; /* Ширина поля */
+    box-sizing: border-box; /* Учитываем отступы при расчете ширины */
+}
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.avatarSection {
+    margin-right: 20px;
+    text-align: center;
+}
+
+.avatarCircle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatarPlaceholder {
+    font-size: 32px;
+    color: #ccc;
+}
+
+.avatarInput {
+    display: none;
+}
