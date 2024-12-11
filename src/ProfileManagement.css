@@ -1,0 +1,194 @@
+/* ProfileManagement.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.bg-gray-50 {
+  background-color: #f9f9f9;
+}
+
+
+.profile-info{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.last-button{
+margin-bottom: 10%;
+}
+
+.input-about input{
+  border: 1px solid #d1d5db; /* Gray border */
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  margin: 5px;
+
+}
+.input-search{
+  border: 1px solid #d1d5db; /* Gray border */
+  border-radius: 8px;
+  width: 12.5%;
+  display: flex;
+}
+.input-search input{
+border: none;
+border-radius: 8px;
+max-width: 80%;
+padding-top: 20px;
+padding-bottom: 20px;
+margin-left: 5%;
+outline:none;
+}
+
+
+
+
+input::placeholder {
+  color: #a1a1a1; /* Light gray for placeholder text */
+}
+
+
+.mt-8 {
+  margin-top: 32px;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.p-6 {
+  padding: 24px;
+}
+
+.rounded-lg {
+  border-radius: 12px;
+}
+
+.shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.miniavatar{
+border-radius: 50%;
+border: 0.5px solid #ccc;
+}
+
+.text-gray-500 {
+  color: #6b7280; /* Gray color */
+}
+
+.text-lg {
+  font-size: 25px;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mb-8 {
+  margin-bottom: 32px;
+}
+
+.w-1 {
+  width: 25%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.border-b {
+  border-bottom: 2px solid #9333EA;
+}
+
+.pb-2 {
+  padding-bottom: 8px;
+  margin-left: 50px;
+  font-size: 30px;
+}
+
+button {
+  background-color: #9333EA; /* Purple button background */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+ 
+}
+
+button:hover {
+  background-color: #9333EA; /* Darker purple on hover */
+}
+
+.w-32 {
+  width: 8rem; /* 32 units in Tailwind */
+}
+
+.h-32 {
+  height: 8rem; /* 32 units in Tailwind */
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.course-card {
+  background-color: #9333EA; /* Purple background for course cards */
+  color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.course-card:hover {
+  background-color: #7A28B8; /* Darker purple on hover */
+}
+
+.Personal-data{
+display: flex;
+gap: 15px;
+margin-left: 12.8%;
+
+}
+.Personal-data p{
+cursor: pointer;
+}

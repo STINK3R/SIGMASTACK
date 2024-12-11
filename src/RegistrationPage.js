@@ -57,7 +57,7 @@ function RegistrationPage() {
       localStorage.setItem('user', JSON.stringify(data.user));
 
       // Перенаправляем на главную
-      navigate('/mainpage');
+      navigate('/profilemanagement');
     } catch (err) {
       setError(err.message);
       console.error('Ошибка:', err);
@@ -73,7 +73,7 @@ function RegistrationPage() {
       <form onSubmit={handleSubmit} className='form-reg'>
         <label>
           Имя:
-          <input
+          <input className='input-reg-log'
             type="text"
             name="firstName"
             value={formData.firstName}
@@ -83,7 +83,7 @@ function RegistrationPage() {
         </label>
         <label>
           Фамилия:
-          <input
+          <input className='input-reg-log'
             type="text"
             name="lastName"
             value={formData.lastName}
@@ -93,7 +93,7 @@ function RegistrationPage() {
         </label>
         <label>
           Отчество:
-          <input
+          <input className='input-reg-log'
             type="text"
             name="middleName"
             value={formData.middleName}
@@ -103,7 +103,7 @@ function RegistrationPage() {
         </label>
         <label>
           Электронная почта:
-          <input
+          <input className='input-reg-log'
             type="email"
             name="email"
             value={formData.email}
@@ -113,7 +113,7 @@ function RegistrationPage() {
         </label>
         <label>
           Пароль:
-          <input
+          <input className='input-reg-log'
             type="password"
             name="password"
             value={formData.password}

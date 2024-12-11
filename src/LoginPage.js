@@ -37,7 +37,7 @@ function LoginPage() {
       localStorage.setItem('user', JSON.stringify(data.user));
 
       // Перенаправляем на главную
-      navigate('/mainpage');
+      navigate('/profilemanagement');
     } catch (err) {
       setError(err.message);
     } finally {

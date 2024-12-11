@@ -5,7 +5,8 @@ import './App.css';
 import RegistrationPage from './RegistrationPage'
 import LoginPage from './LoginPage'
 import HomePage from './HomePage';
-import MainPage from './MainPage';
+import ProfileManagement from './ProfileManagement';
+import MyCourses from './MyCourses';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/mainpage" element={<MainPage />} />
+        <Route path="/profilemanagement" element={<ProfileManagement />} />
+        <Route path="/mycourses" element={<MyCourses />} />
       </Routes>
     </Router>
   );
