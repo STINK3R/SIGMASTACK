@@ -358,3 +358,38 @@ button:disabled {
 flex-direction: column;
 
 }
+
+.input-image{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #7E22CE;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+
+}
+
+.input-image-port{
+  display: flex;
+  padding: 20px 50px;
+  background-color: #7E22CE;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  height: 75px;
+  width: 50px;
+align-items: center;
+text-align: center;
+justify-content: center;
+}
+
+.input-image-port input{
+visibility: none;
+}

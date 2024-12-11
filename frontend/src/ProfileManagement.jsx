@@ -155,7 +155,7 @@ const ProfileManagement = () => {
         {/* Conditional rendering based on active tab */}
         <div className="profile-info">
           {activeTab === 'personalData' && (
-            <div className="flex space-x-8">
+            <div className="space-x-8">
               {/* Sidebar */}
               <div className="w-1/4 text-center">
                 <div className="w-32 h-32 mx-auto bg-gray-200 rounded-full flex items-center justify-center">
@@ -246,16 +246,19 @@ const ProfileManagement = () => {
                 <section className="mb-8">
                 <h3 className="text-lg font-semibold">Сменить показываемое фото на Портфолио</h3>
 
-                <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handlePortfolioImageChange}
-                        className="input-file"
-                    />
+
+                  <input className="input-image"
+                    type="file" 
+                    multiple 
+                    accept="image/*"
+                    id="file-input"
+                    onChange={handlePortfolioImageChange} 
+                  />
+       
                      <button className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg" onClick={handleSavePersonal}>
                     Сохранить
                   </button>
-</section>
+                  </section>
                 {/* Password Section */}
                 <section>
                   <h3 className="text-lg font-semibold">Пароль и авторизация</h3>
