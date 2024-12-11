@@ -125,46 +125,10 @@ const ProfileManagement = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="header">
-        <h1 className="logo">
-              <span className="logo-edu">Edu</span>
-              <span className="logo-connect">Connect</span>
-            </h1>
-          <SearchBar />
-          <div className="flex items-center space-x-4">
-            <img 
-              src="https://via.placeholder.com/50"
-              alt="User"
-              className="miniavatar"
-            />
-            <button onClick={handleLogout} className="logout-button">
-              Выйти
-            </button>
-        </div>
-      </header>
 
       {/* Main Content */}
       <main className="container mx-auto mt-8 px-4">
-        
 
-        {/* Tabs */}
-        <div className="mt-4 bord=er-b">
-          <div className="Personal-data">
-            <p 
-              className={`cursor-pointer ${activeTab === 'personalData' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500'}`} 
-              onClick={() => setActiveTab('personalData')}
-            >
-              Личные данные
-            </p>
-            <p 
-              className={`cursor-pointer ${activeTab === 'myCourses' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500'}`} 
-              onClick={() => setActiveTab('myCourses')}
-            >
-              Мои курсы
-            </p>
-          </div>
-        </div>
 
         {/* Conditional rendering based on active tab */}
         <div className="profile-info">

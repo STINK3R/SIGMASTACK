@@ -31,12 +31,7 @@ margin-bottom: 10%;
   margin: 5px;
 
 }
-.input-search{
-  border: 1px solid #d1d5db; /* Gray border */
-  border-radius: 8px;
-  width: 12.5%;
-  display: flex;
-}
+
 .input-search input{
 border: none;
 border-radius: 8px;
@@ -46,7 +41,9 @@ padding-bottom: 20px;
 margin-left: 5%;
 outline:none;
 }
-
+h3{
+margin-top: 10%;
+}
 
 
 
@@ -170,17 +167,18 @@ button:hover {
 }
 
 .course-card {
-  background-color: #9333EA; /* Purple background for course cards */
+
   color: white;
   border-radius: 12px;
   padding: 20px;
   margin: 10px;
   text-align: center;
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
+
 }
 
 .course-card:hover {
-  background-color: #7A28B8; /* Darker purple on hover */
+  background-color: #7A28B8; 
 }
 
 .Personal-data{

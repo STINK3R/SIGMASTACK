@@ -27,6 +27,19 @@ margin: auto;
   border-radius: 0px 0px 15px 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.home-header {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  
+  color: FFFFFF;
+  height: 84px;
+  background-color: #FFFFFF;
+  border-radius: 0px 0px 15px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 .reg-step2{
 height: 100px;
 padding: 2%;

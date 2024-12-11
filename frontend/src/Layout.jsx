@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
         </nav>
         <div className="header-right">
           <img 
-            src="https://via.placeholder.com/40"
+            src="https://via.placeholder.com/50"
             alt="User"
             className="user-avatar"
           />

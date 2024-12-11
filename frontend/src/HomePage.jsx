@@ -13,7 +13,7 @@ function HomePage() {
       <div className="app">
         <div className="container">
           {/* Header */}
-          <header className="header">
+          <header className="home-header">
             <h1 className="logo">
               <span className="logo-edu">Edu</span>
               <span className="logo-connect">Connect</span>

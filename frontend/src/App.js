@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 
 import RegistrationPage from './RegistrationPage'
@@ -23,7 +23,7 @@ const PrivateRoute = ({ children }) => {
 
       if (!token) {
         console.log('Токен не найден, перенаправление');
-        navigate('/login');
+        navigate('/');
         return;
       }
 

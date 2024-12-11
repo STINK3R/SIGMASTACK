@@ -193,24 +193,6 @@ const CoursePage = () => {
 
   return (
     <div className="course-page">
-      <header className="header">
-        <h1 className="logo">
-          <span className="logo-edu">Edu</span>
-          <span className="logo-connect">Connect</span>
-        </h1>
-        <SearchBar />
-        <div className="flex items-center space-x-4">
-          <img 
-            src="https://via.placeholder.com/50"
-            alt="User"
-            className="miniavatar"
-          />
-          <button onClick={handleLogout} className="logout-button">
-            Выйти
-          </button>
-        </div>
-      </header>
-
       <main className="course-content">
         <h1 className="course-title">{course.title}</h1>
         <div className="course-info">
